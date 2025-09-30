@@ -10,7 +10,7 @@ namespace Img_size_slider.ViewModel
     public class VieWModel : ViewModelBase
     {
         private PModel model;
-        public int Size { get; private set; }
+        public string Size { get; private set; }
         public VieWModel(PModel model)
         {
             this.model = model;
@@ -19,7 +19,8 @@ namespace Img_size_slider.ViewModel
 
         private void Model_sizeChanged(object sender, ImgSizeSliderEventArgs e)
         {
-            
+            Size = e.Size;
+            OnPropertyChanged(nameof(Size));
         }
 
         public int Width {  get { return model.Width; } set { if(model.Width != value) { model.setWidth(value); OnPropertyChanged(nameof(Width)); } } }
